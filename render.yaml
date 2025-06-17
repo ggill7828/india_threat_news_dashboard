@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: threat-news-monitor
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
