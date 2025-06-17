@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>India Threat News Dashboard</title>
+    <meta http-equiv="refresh" content="360">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .last-updated {
+            text-align: right;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .export-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #0a7cff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .search-box {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 400px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        .date-section {
+            margin-bottom: 25px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 15px;
+        }
+        .date-header {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .news-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        a {
+            font-weight: bold;
+            color: #0a7cff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            margin-left: 10px;
+            background-color: #e2e8f0;
+            color: #333;
+        }
+        .source-badge {
+            background-color: #facc15;
+            color: #000;
+        }
+        .medium-badge {
+            background-color: #34d399;
+            color: #000;
+        }
+        .news-container {
+            display: block;
+        }
+    </style>
+    <script>
+        function filterNews() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.news-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(search) ? 'block' : 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <h1>🇮🇳 India Threat News Dashboard</h1>
+    <div class="last-updated">Last Updated: {{ last_updated }}</div>
+
+    <div style="text-align:center;">
+        <a href="/export" class="export-btn">📤 Export to Word</a>
+    </div>
+
+    <input type="text" id="searchInput" class="search-box" onkeyup="filterNews()" placeholder="Search news...">
+
+    {% for date, items in news.items() %}
+        <div class="date-section">
+            <div class="date-header">
+                📅 {{ date }}
+            </div>
+            <div class="news-container">
+                {% for item in items %}
+                    <div class="news-item">
+                        <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                        <span class="badge source-badge">📰 {{ item.source }}</span>
+                        <span class="badge medium-badge">📡 {{ item.medium }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+</body>
+</html>

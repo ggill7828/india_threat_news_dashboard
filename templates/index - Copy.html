@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>India Threat News Dashboard</title>
+    <meta http-equiv="refresh" content="3600">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f2f2f2; }
+        h1 { color: #333; }
+        .date-section { margin-top: 30px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 1px 1px 5px #ccc; }
+        .news-item { margin-bottom: 15px; }
+        .source, .medium { color: #888; font-size: 0.9em; }
+        a { text-decoration: none; color: #007bff; }
+        .export-btn { background: green; color: white; padding: 10px 15px; border: none; border-radius: 5px; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>India Threat News Dashboard</h1>
+    <a href="/export" class="export-btn">Export to Word</a>
+    {% for date, items in news.items() %}
+        <div class="date-section">
+            <h2>{{ date }}</h2>
+            {% for item in items %}
+                <div class="news-item">
+                    <a href="{{ item.link }}" target="_blank">{{ item.title }}</a><br>
+                    <span class="source">Source: {{ item.source }}</span> |
+                    <span class="medium">Medium: {{ item.medium }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
