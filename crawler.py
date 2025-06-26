@@ -3,8 +3,8 @@ from datetime import datetime
 from collections import defaultdict
 
 GOOGLE_NEWS_FEEDS = {
-    "Death Threat": "https://news.google.com/rss/search?q=death+threat+received+when:15d&hl=en-IN&gl=IN&ceid=IN:en",
-    "Extortion Threat": "https://news.google.com/rss/search?q=extortion+threat+received+when:15d&hl=en-IN&gl=IN&ceid=IN:en",
+    "Death Threat": "https://news.google.com/rss/search?q=death+threat+received+when:90d&hl=en-IN&gl=IN&ceid=IN:en",
+    "Extortion Threat": "https://news.google.com/rss/search?q=extortion+threat+received+when:90d&hl=en-IN&gl=IN&ceid=IN:en",
 }
 
 THREAT_KEYWORDS = [
