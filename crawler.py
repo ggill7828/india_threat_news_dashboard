@@ -5,6 +5,7 @@ from collections import defaultdict
 GOOGLE_NEWS_FEEDS = {
     "Death Threat": "https://news.google.com/rss/search?q=death+threat+received+when:90d&hl=en-IN&gl=IN&ceid=IN:en",
     "Extortion Threat": "https://news.google.com/rss/search?q=extortion+threat+received+when:90d&hl=en-IN&gl=IN&ceid=IN:en",
+    "Ransom Threat": "https://news.google.com/rss/search?q=ransom+threat+received+when:90d&hl=en-IN&gl=IN&ceid=IN:en",
 }
 
 THREAT_KEYWORDS = [
@@ -12,7 +13,7 @@ THREAT_KEYWORDS = [
     "received extortion", "got threat", "threat call", "threatened to kill", "murder threat",
     "extortion call", "extortion mail", "extortion message", "extortion messages",
     "extortion voice note", "extortion voice notes", "extortion letter", "extortion email",
-    "extortion whatsapp", "threat sms"
+    "extortion whatsapp", "threat sms", "ransom threat"
 ]
 
 INDIA_KEYWORDS = [
